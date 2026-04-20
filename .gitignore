@@ -2,7 +2,7 @@
 node_modules/
 .pnp
 .pnp.*
-
+scripts/
 # Next.js build output (updated for subfolder)
 web_app/.next/
 web_app/out/

@@ -8,9 +8,9 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <header className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between px-6 sticky top-0 z-50">
-        <div className="flex items-center gap-2 text-xl font-bold text-gray-900">
-          <span className="text-blue-600">👁️</span> DR-Vision
-        </div>
+        <Link href="/login" className="flex items-center gap-2 text-xl font-bold text-gray-900">
+          <span className="text-blue-600">DR-Vision</span> 
+        </Link>
         <Link href="/login">
           <Button variant="primary" size="sm" className="font-semibold px-6">
             Sign In

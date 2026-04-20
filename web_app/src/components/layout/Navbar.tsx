@@ -21,10 +21,9 @@ export function Navbar() {
   return (
     <header className="h-16 sticky top-0 z-50 w-full backdrop-blur-md bg-white/80 border-b border-gray-200 shadow-sm flex items-center justify-between px-6 lg:px-10">
       <div className="flex items-center gap-8">
-        <p className="text-xl font-bold flex items-center gap-2 text-gray-900 group">
-          <span className="text-blue-600 transition-transform group-hover:scale-110">👁️</span> 
-          DR-Vision
-        </p>
+        <Link href="/dashboard" className="text-xl font-bold flex items-center gap-2 text-gray-900 group">
+          <span className="text-blue-600 transition-transform group-hover:scale-110">DR-Vision</span> 
+        </Link>
         
         <nav className="hidden md:flex items-center gap-2 mt-1">
           {links.map((link) => {

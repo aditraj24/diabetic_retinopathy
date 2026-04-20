@@ -6,7 +6,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto w-full sm:max-w-md">
         <Link href="/" className="flex items-center justify-center gap-2 mb-6 hover:opacity-80 transition-opacity">
-          <span className="text-blue-600 text-3xl">👁️</span>
+          {/* <span className="text-blue-600 text-3xl">👁️</span> */}
           <span className="text-3xl font-bold text-gray-900">DR-Vision</span>
         </Link>
       </div>

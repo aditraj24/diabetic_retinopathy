@@ -5,66 +5,66 @@ import { Button } from "@/components/ui/Button";
 import { Textarea } from "@/components/ui/Textarea";
 import { Save, Check } from "lucide-react";
 
-export function SaveResultButton({ 
-  onSave, 
-  isSaving, 
-  isSaved 
-}: { 
+interface SaveResultButtonProps {
   onSave: (notes: string) => void;
   isSaving: boolean;
   isSaved: boolean;
-}) {
-  const [isExpanded, setIsExpanded] = useState(false);
+}
+
+export function SaveResultButton({ onSave, isSaving, isSaved }: SaveResultButtonProps) {
   const [notes, setNotes] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   if (isSaved) {
     return (
-      <div className="mt-6 flex items-center justify-center p-3 bg-success-green/10 text-success-green rounded-xl border border-success-green/20">
-        <Check size={18} className="mr-2" />
-        <span className="font-semibold">Result Saved to History</span>
+      <div className="mt-8 flex items-center justify-center p-4 bg-[#0D6B6B]/5 border border-[#0D6B6B]/20 rounded-2xl text-[#0D6B6B] font-bold shadow-sm">
+        <Check className="w-5 h-5 mr-2" strokeWidth={2.5} />
+        Result Saved to Patient History
       </div>
-    );
-  }
-
-  if (!isExpanded) {
-    return (
-      <Button 
-        onClick={() => setIsExpanded(true)} 
-        className="w-full mt-6 gap-2" 
-        size="lg"
-      >
-        <Save size={18} />
-        Save Result to History
-      </Button>
     );
   }
 
   return (
-    <div className="mt-6 p-4 rounded-xl border border-white/10 bg-white/[0.03]">
-      <h4 className="font-medium text-white mb-2">Save Analysis</h4>
-      <Textarea
-        placeholder="Add clinical notes, patient reference, or observations..."
-        value={notes}
-        onChange={(e) => setNotes(e.target.value)}
-        rows={3}
-        className="mb-3"
-      />
-      <div className="flex gap-3">
+    <div className="mt-8 pt-6 border-t border-gray-100">
+      {!isExpanded ? (
         <Button 
-          onClick={() => onSave(notes)} 
-          isLoading={isSaving}
-          className="flex-1"
+          onClick={() => setIsExpanded(true)} 
+          className="w-full h-12 text-base font-bold shadow-md bg-[#0D6B6B] hover:bg-[#0a5252] focus:ring-[#0D6B6B]/20"
         >
-          Confirm Save
+          <Save className="w-5 h-5 mr-2" />
+          Save Analysis Result
         </Button>
-        <Button 
-          variant="secondary" 
-          onClick={() => setIsExpanded(false)}
-          disabled={isSaving}
-        >
-          Cancel
-        </Button>
-      </div>
+      ) : (
+        <div className="space-y-4 animate-fade-in-up">
+          <label className="block text-sm font-bold text-gray-900 mb-1">
+            Clinical Notes (Optional)
+          </label>
+          <Textarea
+            placeholder="Add relevant patient observations, visual acuity, or next steps..."
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            rows={3}
+            className="resize-none border-gray-200 focus:border-[#0D6B6B] focus:ring-[#0D6B6B]/20"
+          />
+          <div className="flex gap-3">
+            <Button 
+              onClick={() => onSave(notes)} 
+              isLoading={isSaving} 
+              className="flex-1 font-bold shadow-md bg-[#0D6B6B] hover:bg-[#0a5252] focus:ring-[#0D6B6B]/20"
+            >
+              Confirm Save
+            </Button>
+            <Button 
+              variant="secondary" 
+              onClick={() => setIsExpanded(false)} 
+              disabled={isSaving}
+              className="border-gray-200 text-gray-600 hover:text-gray-900 shadow-sm"
+            >
+              Cancel
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

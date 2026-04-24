@@ -9,34 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          DEFAULT: "#060B26",
-          card: "#1A1F37",
-          light: "#1E2545",
+        teal: {
+          DEFAULT: "#2a7a7a",
+          dark: "#1e6b6b",
+          deep: "#1a5e5e",
+          light: "#5fb3b3",
+          soft: "#a8d5d5",
+          pale: "#cce8e8",
+          mist: "#e8f4f4",
         },
-        "neon-blue": "#0075FF",
-        cyan: "#4FD1C5",
-        "success-green": "#01B574",
-        muted: "#A0AEC0",
-      },
-      backdropBlur: {
-        xs: "2px",
-        "2xl": "40px",
+        coral: "#e8845c",
+        amber: "#f5a623",
+        primary: "#1a1a2e",
+        secondary: "#6b7280",
       },
       boxShadow: {
-        glow: "0 0 40px rgba(0, 117, 255, 0.15)",
-        "glow-sm": "0 0 20px rgba(0, 117, 255, 0.1)",
-        "glow-cyan": "0 0 30px rgba(79, 209, 197, 0.15)",
-        "glow-green": "0 0 20px rgba(1, 181, 116, 0.15)",
-        glass: "0 8px 32px rgba(0, 117, 255, 0.08)",
-      },
-      borderColor: {
-        "glass": "rgba(255, 255, 255, 0.1)",
+        card: "0 4px 24px rgba(42, 122, 122, 0.08)",
+        "card-hover": "0 8px 40px rgba(42, 122, 122, 0.14)",
+        "card-lg": "0 12px 48px rgba(42, 122, 122, 0.12)",
+        glow: "0 0 40px rgba(95, 179, 179, 0.2)",
+        "glow-sm": "0 0 20px rgba(95, 179, 179, 0.12)",
+        "btn": "0 4px 14px rgba(42, 122, 122, 0.25)",
+        "btn-hover": "0 6px 20px rgba(30, 107, 107, 0.35)",
       },
       animation: {
         "fade-in-up": "fadeInUp 0.5s ease-out",
-        "glow-pulse": "glowPulse 2s ease-in-out infinite",
-        "shimmer": "shimmer 2s linear infinite",
+        "glow-pulse": "glowPulse 3s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
       },
       keyframes: {
         fadeInUp: {
@@ -44,12 +43,12 @@ const config: Config = {
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         glowPulse: {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(0, 117, 255, 0.1)" },
-          "50%": { boxShadow: "0 0 40px rgba(0, 117, 255, 0.25)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(95, 179, 179, 0.1)" },
+          "50%": { boxShadow: "0 0 40px rgba(95, 179, 179, 0.25)" },
         },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
         },
       },
     },

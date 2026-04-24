@@ -8,7 +8,6 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { ImageUploader } from "@/components/analysis/ImageUploader";
 import { AnalyseButton } from "@/components/analysis/AnalyseButton";
 import { ResultPanel } from "@/components/analysis/ResultPanel";
-import { AnalysisSkeleton } from "@/components/analysis/AnalysisSkeleton";
 
 export default function DashboardPage() {
   const { 
@@ -31,8 +30,6 @@ export default function DashboardPage() {
 
   return (
     <>
-
-      
       <PageHeader 
         title="New Analysis" 
         subtitle="Upload a retinal fundus photograph for immediate DL screening evaluation."
@@ -53,7 +50,7 @@ export default function DashboardPage() {
 
         <div className="w-full lg:w-1/2">
           {isAnalysing ? (
-            <div className="glass-card p-8 flex flex-col items-center justify-center min-h-[400px] gap-6">
+            <div className="white-card p-8 flex flex-col items-center justify-center min-h-[400px] gap-6">
               {/* Animated retinal processing GIF */}
               <div className="relative w-48 h-48 md:w-56 md:h-56">
                 <Image 
@@ -65,8 +62,8 @@ export default function DashboardPage() {
                 />
               </div>
               <div className="text-center">
-                <p className="text-white font-semibold text-lg animate-pulse">Analysing Retinal Image...</p>
-                <p className="text-muted text-sm mt-1">Running deep learning model inference</p>
+                <p className="text-teal font-bold text-lg animate-pulse">Analysing Retinal Image...</p>
+                <p className="text-secondary text-sm mt-1 font-medium">Running deep learning model inference</p>
               </div>
             </div>
           ) : result ? (
@@ -79,18 +76,18 @@ export default function DashboardPage() {
           ) : (
             <div className="h-full min-h-[360px] flex">
               <div className="w-full h-full flex self-stretch items-center">
-                <div className="flex flex-col items-center justify-center p-12 text-center glass-card w-full">
+                <div className="flex flex-col items-center justify-center p-12 text-center white-card w-full">
                   {/* Retinography as visual guide */}
-                  <div className="relative w-24 h-24 mb-6 opacity-40">
+                  <div className="relative w-24 h-24 mb-6 opacity-30">
                     <Image 
                       src="/retinography.png" 
                       alt="Fundus example" 
                       fill 
-                      className="object-contain rounded-full" 
+                      className="object-contain rounded-full mix-blend-multiply" 
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">No Analysis Yet</h3>
-                  <p className="text-muted max-w-sm">Upload a retinal image and click analyse to see the detailed evaluation results here.</p>
+                  <h3 className="text-xl font-bold text-primary mb-2">No Analysis Yet</h3>
+                  <p className="text-secondary font-medium max-w-sm">Upload a retinal image and click analyse to see the detailed evaluation results here.</p>
                 </div>
               </div>
             </div>

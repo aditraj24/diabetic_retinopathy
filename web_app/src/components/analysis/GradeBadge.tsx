@@ -9,11 +9,11 @@ export function GradeBadge({ grade, size = "lg" }: { grade: number; size?: "sm" 
   }
 
   return (
-    <div className={`flex flex-col items-center justify-center p-6 rounded-2xl border ${info.badgeBg} ${info.badgeText} border-white/10`}
-      style={{ boxShadow: `0 0 30px ${info.hexColor}20` }}
+    <div className={`flex flex-col items-center justify-center p-6 rounded-3xl border ${info.badgeBg} ${info.badgeText} border-gray-100`}
+      style={{ boxShadow: `0 8px 30px ${info.hexColor}15` }}
     >
-      <span className="text-5xl font-black mb-2">Grade {grade}</span>
-      <span className="text-xl font-bold">{info.label}</span>
+      <span className="text-5xl font-black mb-2 tracking-tight">Grade {grade}</span>
+      <span className="text-xl font-bold opacity-90">{info.label}</span>
     </div>
   );
 }

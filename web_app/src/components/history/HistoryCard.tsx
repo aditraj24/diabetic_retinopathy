@@ -12,36 +12,36 @@ export function HistoryCard({ analysis }: { analysis: SavedAnalysis }) {
 
   return (
     <Link href={`/dashboard/history/${analysis._id}`} className="block group">
-      <div className="glass-card overflow-hidden transition-all duration-300 group-hover:shadow-glow group-hover:scale-[1.02] group-hover:border-white/20">
+      <div className="bg-white rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100/80 shadow-sm flex flex-col h-full">
         
-        <div className="relative w-full aspect-square bg-navy">
+        <div className="relative w-full aspect-square bg-gray-50/50">
           <Image
             src={analysis.cloudinaryUrl}
             alt="Retinal image"
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent opacity-80" />
           <div className="absolute bottom-3 left-3">
             <GradeBadge grade={analysis.grade} size="sm" />
           </div>
         </div>
         
-        <div className="p-4">
-          <div className="flex justify-between items-start mb-2">
-            <h4 className="font-bold text-white">
+        <div className="p-5 flex-1 flex flex-col">
+          <div className="flex justify-between items-center mb-3">
+            <h4 className="font-bold text-gray-900 flex items-center gap-1.5">
               {(analysis.confidence * 100).toFixed(1)}% Confidence
             </h4>
-            <span className="text-xs text-muted">{dateStr}</span>
+            <span className="text-xs font-semibold text-gray-500 bg-gray-100/80 px-2 py-1 rounded-md">{dateStr}</span>
           </div>
           
           {analysis.notes ? (
-            <p className="text-sm text-muted line-clamp-2">
+            <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
               {analysis.notes}
             </p>
           ) : (
-            <p className="text-sm text-white/20 italic">No notes provided</p>
+            <p className="text-sm text-gray-400 italic">No notes provided</p>
           )}
         </div>
       </div>

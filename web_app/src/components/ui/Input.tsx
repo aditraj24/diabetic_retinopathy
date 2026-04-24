@@ -1,30 +1,28 @@
-import React, { InputHTMLAttributes, forwardRef } from "react";
+import React, { forwardRef } from "react";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, className = "", id, ...props }, ref) => {
-    const defaultId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
-    
+  ({ className = "", label, error, ...props }, ref) => {
     return (
-      <div className="w-full flex flex-col space-y-1">
-        {label && (
-          <label htmlFor={defaultId} className="text-sm font-medium text-muted">
-            {label}
-          </label>
-        )}
+      <div className="w-full">
+        {label && <label className="block text-sm font-bold text-primary mb-1.5">{label}</label>}
         <input
-          id={defaultId}
           ref={ref}
-          className={`w-full rounded-xl border ${error ? 'border-red-500/50 focus:ring-red-500' : 'border-white/10 focus:ring-neon-blue'} bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed transition-all ${className}`}
+          className={`w-full px-4 py-2.5 bg-white border rounded-xl text-primary font-medium placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
+            error 
+              ? "border-red-400 focus:border-red-500 focus:ring-red-200" 
+              : "border-gray-200 focus:border-teal focus:ring-teal/20 hover:border-gray-300"
+          } ${className}`}
           {...props}
         />
-        {error && <p className="text-xs text-red-400 mt-1">{error}</p>}
+        {error && <p className="mt-1 text-sm text-red-500 font-medium">{error}</p>}
       </div>
     );
   }
 );
+
 Input.displayName = "Input";

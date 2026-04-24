@@ -33,13 +33,28 @@ const config: Config = {
         "btn-hover": "0 6px 20px rgba(30, 107, 107, 0.35)",
       },
       animation: {
-        "fade-in-up": "fadeInUp 0.5s ease-out",
+        "fade-in-up": "fadeInUp 0.5s ease-out forwards",
+        "fade-in": "fadeIn 0.4s ease-out forwards",
+        "scale-in": "scaleIn 0.3s ease-out forwards",
+        "slide-in-bottom": "slideInFromBottom 0.4s ease-out forwards",
         "glow-pulse": "glowPulse 3s ease-in-out infinite",
         "float": "float 6s ease-in-out infinite",
       },
       keyframes: {
         fadeInUp: {
           "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        scaleIn: {
+          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
+        slideInFromBottom: {
+          "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         glowPulse: {

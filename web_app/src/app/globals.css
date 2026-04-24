@@ -14,6 +14,8 @@
   --color-secondary: #6b7280;
 }
 
+/* ─── Base ──────────────────────────────────────── */
+
 html {
   @apply scroll-smooth;
 }
@@ -40,61 +42,124 @@ body::before {
   pointer-events: none;
 }
 
-/* Light scrollbar */
+/* Subtle animated grain overlay for texture */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Text selection */
+::selection {
+  background: rgba(42, 122, 122, 0.2);
+  color: #1a5e5e;
+}
+
+/* ─── Scrollbar ─────────────────────────────────── */
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #e8f4f4;
 }
 ::-webkit-scrollbar-thumb {
   background: #a8d5d5;
-  border-radius: 4px;
+  border-radius: 99px;
+  border: 1px solid #e8f4f4;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #5fb3b3;
 }
 
-/* White card utility */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a8d5d5 #e8f4f4;
+}
+
+/* ─── White Card ────────────────────────────────── */
+
 .white-card {
   background: #ffffff;
   border-radius: 20px;
   border: 1px solid rgba(42, 122, 122, 0.08);
-  box-shadow: 0 4px 24px rgba(42, 122, 122, 0.08);
+  box-shadow:
+    0 4px 24px rgba(42, 122, 122, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .white-card-hover {
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .white-card-hover:hover {
-  box-shadow: 0 8px 40px rgba(42, 122, 122, 0.14);
-  border-color: rgba(42, 122, 122, 0.15);
-  transform: translateY(-2px);
+  box-shadow:
+    0 8px 40px rgba(42, 122, 122, 0.14),
+    0 2px 8px rgba(42, 122, 122, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: rgba(42, 122, 122, 0.18);
+  transform: translateY(-3px);
 }
+
+/* ─── Buttons ───────────────────────────────────── */
 
 /* Teal gradient button */
 .btn-teal {
-  background: linear-gradient(135deg, #2a7a7a 0%, #1e6b6b 100%);
+  background: linear-gradient(135deg, #2a7a7a 0%, #1e6b6b 50%, #1a5e5e 100%);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
   color: #FFFFFF;
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 14px rgba(42, 122, 122, 0.25);
 }
 .btn-teal:hover {
-  box-shadow: 0 6px 20px rgba(30, 107, 107, 0.35);
+  background-position: 100% 50%;
+  box-shadow:
+    0 6px 24px rgba(30, 107, 107, 0.35),
+    0 0 0 3px rgba(42, 122, 122, 0.08);
   transform: translateY(-1px);
 }
 .btn-teal:active {
-  transform: translateY(0);
+  transform: translateY(0.5px);
+  box-shadow: 0 2px 8px rgba(42, 122, 122, 0.2);
 }
 
-/* Chart glow — teal */
+/* ─── Modal (teal light theme) ──────────────────── */
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(42, 122, 122, 0.1);
+  box-shadow:
+    0 24px 64px rgba(42, 122, 122, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Toast (teal light theme) ──────────────────── */
+
+.toast-card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid rgba(42, 122, 122, 0.08);
+  box-shadow:
+    0 12px 40px rgba(42, 122, 122, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* ─── Chart glow — teal ─────────────────────────── */
+
 .chart-glow {
   filter: drop-shadow(0 0 6px rgba(42, 122, 122, 0.4));
 }
 
-/* Semi-circle gauge */
+/* ─── Semi-circle gauge ─────────────────────────── */
+
 .gauge-wrapper {
   position: relative;
   width: 200px;
@@ -147,4 +212,116 @@ body::before {
   color: #6b7280;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+}
+
+/* ─── Utility: Section headings ─────────────────── */
+
+.section-heading {
+  @apply text-3xl md:text-4xl font-extrabold tracking-tight;
+  color: #1a1a2e;
+}
+
+.section-subtitle {
+  @apply text-lg font-medium leading-relaxed;
+  color: #6b7280;
+}
+
+/* ─── Utility: Teal text gradient ───────────────── */
+
+.text-gradient-teal {
+  background: linear-gradient(135deg, #2a7a7a, #1e6b6b, #5fb3b3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Utility: Focus ring (accessible) ──────────── */
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+}
+
+/* ─── Utility: Shimmer loading placeholder ──────── */
+
+.shimmer-line {
+  background: linear-gradient(
+    90deg,
+    #e8f4f4 0%,
+    #cce8e8 40%,
+    #e8f4f4 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ─── Utility: Divider ──────────────────────────── */
+
+.divider-teal {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(42, 122, 122, 0.15), transparent);
+}
+
+/* ─── Keyframes ─────────────────────────────────── */
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Animation utilities ───────────────────────── */
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInFromBottom 0.4s ease-out forwards;
 }

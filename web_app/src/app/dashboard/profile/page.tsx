@@ -50,36 +50,36 @@ export default async function ProfilePage() {
       <PageHeader title="Account Profile" subtitle="Manage your account preferences and view statistics." />
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-        <div className="glass-card p-8 col-span-1 flex flex-col items-center">
-           <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-neon-blue to-cyan text-white flex items-center justify-center text-5xl font-bold mb-6 shadow-glow">
+        <div className="white-card p-8 col-span-1 flex flex-col items-center">
+           <div className="w-32 h-32 rounded-full bg-gradient-to-tr from-teal to-teal-light text-white flex items-center justify-center text-5xl font-bold mb-6 shadow-glow">
              {initial}
            </div>
            <ProfileClient userId={user._id.toString()} username={user.username} initialName={user.displayName} />
-           <p className="text-sm text-muted mt-6">Member since {memberSince}</p>
+           <p className="text-sm text-secondary mt-6">Member since {memberSince}</p>
         </div>
         
         <div className="col-span-1 lg:col-span-2 space-y-8">
            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="glass-card p-6">
-                 <p className="text-sm font-medium text-muted mb-1">Total Analyses</p>
-                 <p className="text-3xl font-bold text-white">{totalAnalyses}</p>
+              <div className="white-card p-6">
+                 <p className="text-sm font-medium text-secondary mb-1">Total Analyses</p>
+                 <p className="text-3xl font-bold text-primary">{totalAnalyses}</p>
               </div>
-              <div className="glass-card p-6">
-                 <p className="text-sm font-medium text-muted mb-1">Most Common</p>
-                 <p className="text-xl font-bold text-white mt-1">
+              <div className="white-card p-6">
+                 <p className="text-sm font-medium text-secondary mb-1">Most Common</p>
+                 <p className="text-xl font-bold text-primary mt-1">
                    {mostCommonGrade !== -1 ? GRADE_MAP[mostCommonGrade].shortLabel : "N/A"}
                  </p>
               </div>
-              <div className="glass-card p-6">
-                 <p className="text-sm font-medium text-muted mb-1">Last Analysis</p>
-                 <p className="text-lg font-bold text-white mt-2">
+              <div className="white-card p-6">
+                 <p className="text-sm font-medium text-secondary mb-1">Last Analysis</p>
+                 <p className="text-lg font-bold text-primary mt-2">
                    {lastAnalysis ? new Date(lastAnalysis.savedAt).toLocaleDateString() : "Never"}
                  </p>
               </div>
            </div>
            
-           <div className="glass-card p-8">
-              <h3 className="text-lg font-bold text-white mb-6">Grade Distribution</h3>
+           <div className="white-card p-8">
+              <h3 className="text-lg font-bold text-primary mb-6">Grade Distribution</h3>
               <div className="space-y-4">
                  {[0, 1, 2, 3, 4].map(grade => {
                    const count = distMap[grade];
@@ -87,11 +87,11 @@ export default async function ProfilePage() {
                    const info = GRADE_MAP[grade];
                    return (
                      <div key={grade} className="flex items-center gap-4">
-                       <div className="w-24 text-sm font-medium text-muted">{info.shortLabel}</div>
-                       <div className="flex-1 h-3 bg-white/10 rounded-full overflow-hidden">
+                       <div className="w-24 text-sm font-medium text-secondary">{info.shortLabel}</div>
+                       <div className="flex-1 h-3 bg-teal-mist rounded-full overflow-hidden">
                          <div className={`h-full ${info.barColor} rounded-full transition-all duration-700`} style={{ width: `${pct}%` }} />
                        </div>
-                       <div className="w-12 text-right text-sm font-bold text-white">{count}</div>
+                       <div className="w-12 text-right text-sm font-bold text-primary">{count}</div>
                      </div>
                    );
                  })}

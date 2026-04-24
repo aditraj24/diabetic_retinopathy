@@ -7,7 +7,7 @@ export function HistoryGrid({ analyses, isLoading }: { analyses: SavedAnalysis[]
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="glass-card p-2">
+          <div key={i} className="white-card p-2">
             <Skeleton className="w-full aspect-square rounded-xl mb-4" />
             <div className="px-2 pb-2">
               <Skeleton className="h-5 w-3/4 mb-2" />

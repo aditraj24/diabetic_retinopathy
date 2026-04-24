@@ -36,7 +36,7 @@ export default function ProfileClient({ userId, username, initialName }: { userI
 
   return (
     <div className="w-full text-center">
-      <h2 className="text-xl font-bold text-white mb-1">{username}</h2>
+      <h2 className="text-xl font-bold text-primary mb-1">{username}</h2>
       
       {isEditing ? (
         <div className="mt-4 space-y-3">
@@ -52,7 +52,7 @@ export default function ProfileClient({ userId, username, initialName }: { userI
         </div>
       ) : (
         <div className="mt-2 flex flex-col items-center">
-          <p className="text-muted mb-3">{displayName}</p>
+          <p className="text-secondary mb-3">{displayName}</p>
           <Button variant="ghost" size="sm" onClick={() => setIsEditing(true)} className="gap-1.5">
             <Pencil size={13} />
             Edit Profile

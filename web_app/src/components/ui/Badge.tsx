@@ -17,7 +17,7 @@ export function Badge({ grade, size = "md", className = "" }: BadgeProps) {
   };
 
   return (
-    <span className={`inline-flex items-center rounded-full ${info.badgeBg} ${info.badgeText} ${sizes[size]} border border-white/5 ${className}`}>
+    <span className={`inline-flex items-center rounded-full ${info.badgeBg} ${info.badgeText} ${sizes[size]} border border-black/5 shadow-sm ${className}`}>
       {info.shortLabel}
     </span>
   );

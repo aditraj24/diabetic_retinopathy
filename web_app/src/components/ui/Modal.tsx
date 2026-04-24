@@ -24,13 +24,13 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
-      <div className="relative z-10 w-full max-w-md glass-card animate-fade-in-up">
-        <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
-          <h3 className="text-lg font-medium leading-6 text-white">{title}</h3>
+      <div className="fixed inset-0 bg-primary/40 backdrop-blur-sm animate-fade-in" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-md modal-card animate-scale-in">
+        <div className="flex items-center justify-between border-b border-teal/10 px-6 py-4">
+          <h3 className="text-lg font-bold leading-6 text-primary">{title}</h3>
           <button
             onClick={onClose}
-            className="rounded-md text-muted hover:text-white focus:outline-none focus:ring-2 focus:ring-neon-blue transition-colors"
+            className="rounded-lg p-1 text-secondary hover:text-primary hover:bg-teal-mist focus-ring transition-colors"
           >
             <span className="sr-only">Close panel</span>
             <X size={20} />

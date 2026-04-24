@@ -2,21 +2,21 @@ import { Skeleton } from "@/components/ui/Skeleton";
 
 export default function Loading() {
   return (
-    <div className="animate-pulse">
+    <div>
       <div className="mb-8">
          <Skeleton className="h-6 w-32 mb-4" />
-         <div className="flex justify-between items-center glass-card p-4">
+         <div className="flex justify-between items-center white-card p-4">
            <Skeleton className="h-8 w-64" />
            <Skeleton className="h-6 w-32" />
          </div>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="glass-card p-6">
+        <div className="white-card p-6">
           <Skeleton className="w-full aspect-square rounded-xl" />
         </div>
         
-        <div className="glass-card p-6 space-y-8">
+        <div className="white-card p-6 space-y-8">
           <div className="flex flex-col items-center justify-center space-y-4">
             <Skeleton className="h-24 w-48 rounded-xl" />
             <Skeleton className="h-6 w-32" />

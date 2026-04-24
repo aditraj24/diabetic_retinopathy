@@ -60,11 +60,11 @@ export default function DetailClientComponents({ analysisId, initialNotes }: { a
     <div className="space-y-8">
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold text-white">Clinical Notes</h3>
+          <h3 className="text-lg font-bold text-primary">Clinical Notes</h3>
           {!isEditingNotes && (
             <button 
               onClick={() => setIsEditingNotes(true)}
-              className="text-sm font-medium text-neon-blue hover:text-cyan transition-colors flex items-center gap-1.5"
+              className="text-sm font-medium text-teal hover:text-teal-dark transition-colors flex items-center gap-1.5"
             >
               <Pencil size={13} />
               Edit Notes
@@ -73,7 +73,7 @@ export default function DetailClientComponents({ analysisId, initialNotes }: { a
         </div>
         
         {isEditingNotes ? (
-          <div className="p-4 bg-white/[0.03] rounded-xl border border-white/10">
+          <div className="p-4 bg-teal-mist/40 rounded-xl border border-teal/10">
             <Textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
@@ -90,14 +90,14 @@ export default function DetailClientComponents({ analysisId, initialNotes }: { a
             </div>
           </div>
         ) : (
-          <div className="p-4 bg-white/[0.03] rounded-xl border border-white/10 text-muted text-sm whitespace-pre-wrap min-h-[100px]">
-            {notes || <span className="text-white/20 italic">No notes recorded for this analysis.</span>}
+          <div className="p-4 bg-teal-mist/40 rounded-xl border border-teal/10 text-secondary text-sm whitespace-pre-wrap min-h-[100px]">
+            {notes || <span className="text-gray-400 italic">No notes recorded for this analysis.</span>}
           </div>
         )}
       </div>
       
-      <div className="pt-6 border-t border-white/10 flex justify-end">
-        <Button variant="ghost" className="text-red-400 hover:bg-red-500/10 gap-1.5" onClick={() => setShowDeleteModal(true)}>
+      <div className="pt-6 border-t border-teal/10 flex justify-end">
+        <Button variant="ghost" className="text-red-500 hover:bg-red-50 gap-1.5" onClick={() => setShowDeleteModal(true)}>
           <Trash2 size={14} />
           Delete Record
         </Button>
@@ -105,13 +105,13 @@ export default function DetailClientComponents({ analysisId, initialNotes }: { a
 
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={() => setShowDeleteModal(false)} />
-          <div className="relative z-10 w-full max-w-sm glass-card p-6">
-             <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center mb-4">
-               <AlertTriangle className="w-6 h-6 text-red-400" />
+          <div className="fixed inset-0 bg-primary/40 backdrop-blur-sm animate-fade-in" onClick={() => setShowDeleteModal(false)} />
+          <div className="relative z-10 w-full max-w-sm modal-card p-6 animate-scale-in">
+             <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-4">
+               <AlertTriangle className="w-6 h-6 text-red-500" />
              </div>
-             <h3 className="text-lg font-bold text-white mb-2">Delete Analysis Record</h3>
-             <p className="text-sm text-muted mb-6">Are you sure you want to permanently delete this analysis? The original image will also be removed from secure storage.</p>
+             <h3 className="text-lg font-bold text-primary mb-2">Delete Analysis Record</h3>
+             <p className="text-sm text-secondary mb-6">Are you sure you want to permanently delete this analysis? The original image will also be removed from secure storage.</p>
              <div className="flex gap-3">
                <Button variant="danger" className="flex-1" onClick={handleDelete} isLoading={isDeleting}>Confirm Delete</Button>
                <Button variant="secondary" className="flex-1" onClick={() => setShowDeleteModal(false)} disabled={isDeleting}>Cancel</Button>

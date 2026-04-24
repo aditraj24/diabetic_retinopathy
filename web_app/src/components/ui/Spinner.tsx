@@ -1,4 +1,4 @@
-export function Spinner({ size = "md", color = "text-blue-600", className = "" }: { size?: "sm" | "md" | "lg", color?: string, className?: string }) {
+export function Spinner({ size = "md", color = "text-teal", className = "" }: { size?: "sm" | "md" | "lg", color?: string, className?: string }) {
   const sizes = {
     sm: "h-4 w-4 border-2",
     md: "h-6 w-6 border-2",

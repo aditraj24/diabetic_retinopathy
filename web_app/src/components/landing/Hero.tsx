@@ -8,8 +8,8 @@ import { ArrowRight } from "lucide-react";
 
 export function Hero() {
   return (
-    <div className="relative overflow-hidden min-h-[calc(100vh-64px)] flex items-center bg-[#052c2c]">
-      {/* Hero background image — fully responsive */}
+    <div className="relative overflow-hidden min-h-[calc(100vh-64px)] flex items-center bg-gray-900">
+      {/* Hero background image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/heroImage.jpg"
@@ -20,43 +20,51 @@ export function Hero() {
           sizes="100vw"
           quality={90}
         />
-        {/* Dark teal gradient overlay for readability (#052c2c80) */}
-        <div className="absolute inset-0 bg-[#052c2c]/75 bg-gradient-to-r from-[#052c2c]/90 via-[#052c2c]/70 to-[#052c2c]/40" />
+        {/* Solid dark overlay for readability */}
+        <div className="absolute inset-0 bg-gray-900/70" />
       </div>
       
-      {/* Left-aligned content with approx 10% padding aligned vertically center */}
+      {/* Left-aligned content */}
       <div className="relative z-10 w-full pl-[5%] sm:pl-[10%] pr-[5%] py-20 md:py-32 flex">
-        <div className="max-w-3xl">
+        <div className="max-w-2xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-5 leading-tight">
               Diabetic Retinopathy Screening
             </h1>
             
-            <p className="mt-4 text-lg md:text-xl text-white/90 font-light mb-10 max-w-xl leading-relaxed">
+            <p className="mt-3 text-base md:text-lg text-gray-200 font-normal mb-8 leading-relaxed">
               Upload a retinal fundus image and receive instant DL-driven grading with clinical recommendations. Built for screening assistance in clinical and research settings.
             </p>
           </motion.div>
           
           <motion.div 
-            className="flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, y: 20 }}
+            className="flex flex-col sm:flex-row gap-3"
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Link href="/login" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-full bg-[#0D6B6B] text-white hover:bg-[#0a5252] transition-colors flex items-center justify-center gap-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0D6B6B] focus:ring-offset-2 focus:ring-offset-[#052c2c]">
+              <Button 
+                variant="primary" 
+                size="lg"
+                className="w-full sm:w-auto px-6 py-3 text-base font-medium rounded-md shadow-sm"
+              >
                 Get Started
-                <ArrowRight size={18} />
-              </button>
+                <ArrowRight size={16} className="ml-2" />
+              </Button>
             </Link>
             <a href="#features" className="w-full sm:w-auto">
-              <button className="w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-full bg-white text-[#0D6B6B] hover:bg-gray-100 transition-colors flex items-center justify-center shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#052c2c]">
+              <Button 
+                variant="secondary" 
+                size="lg"
+                className="w-full sm:w-auto px-6 py-3 text-base font-medium bg-white text-gray-900 border-gray-200 hover:bg-gray-50 rounded-md shadow-sm"
+              >
                 Learn More
-              </button>
+              </Button>
             </a>
           </motion.div>
         </div>

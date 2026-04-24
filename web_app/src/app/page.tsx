@@ -35,7 +35,7 @@ export default function LandingPage() {
         
         {/* How it works */}
         <div className="py-24 px-4 relative overflow-hidden bg-white/30 border-y border-teal/5">
-          <div className="absolute -left-16 top-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none select-none hidden md:block mix-blend-multiply">
+          <div className="absolute -left-16 top-1/2 -translate-y-1/2 opacity-[0.3] pointer-events-none select-none hidden md:block mix-blend-multiply">
             <Image 
               src="/retinography.png" 
               alt="" 

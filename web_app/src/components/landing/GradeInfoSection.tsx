@@ -5,44 +5,48 @@ import { motion } from "framer-motion";
 
 export function GradeInfoSection() {
   return (
-    <div className="py-24 bg-transparent">
+    <div className="py-16 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
-          <h2 className="text-3xl font-extrabold text-primary">Understanding DR Grades</h2>
-          <p className="mt-4 text-lg text-secondary font-medium max-w-2xl mx-auto">
+          <h2 className="text-2xl font-semibold text-gray-900">Understanding DR Grades</h2>
+          <p className="mt-2 text-sm text-gray-500 max-w-2xl mx-auto">
             The platform utilizes a 5-stage classification system for Diabetic Retinopathy severity.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {[0, 1, 2, 3, 4].map((grade) => {
             const info = GRADE_MAP[grade];
             return (
               <motion.div
                 key={grade}
-                className="white-card white-card-hover p-6 relative overflow-hidden cursor-default border border-gray-100"
-                initial={{ opacity: 0, y: 20 }}
+                className="bg-white border border-gray-200 rounded-md p-5 hover:border-gray-300 transition-colors duration-200 cursor-default"
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: grade * 0.1 }}
-                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3, delay: grade * 0.05 }}
               >
-                <div className={`absolute top-0 left-0 w-full h-1 ${info.barColor}`}></div>
-
-                <div className="flex items-center gap-2 mb-4">
-                  <span className={`w-3 h-3 rounded-full`} style={{ backgroundColor: info.hexColor }}></span>
-                  <span className="font-bold text-secondary text-sm tracking-widest uppercase">Grade {grade}</span>
+                <div className="flex items-center gap-2 mb-3">
+                  <span 
+                    className="w-2 h-2 rounded-full" 
+                    style={{ backgroundColor: info.hexColor }}
+                  />
+                  <span className="font-mono text-xs text-gray-400">
+                    Grade {grade}
+                  </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-primary mb-3">{info.label}</h3>
+                <h3 className="text-base font-semibold text-gray-900 mb-2">
+                  {info.label}
+                </h3>
 
-                <p className="text-sm text-secondary font-medium line-clamp-4 leading-relaxed">
+                <p className="text-xs text-gray-500 leading-relaxed">
                   {info.recommendation}
                 </p>
               </motion.div>

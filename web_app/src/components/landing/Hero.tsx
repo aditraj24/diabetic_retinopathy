@@ -3,10 +3,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
-import { motion } from "framer-motion";
+import { motion, animate } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export function Hero() {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.scrollY - 64; // Adjust for header height
+      animate(window.scrollY, y, {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+        onUpdate: (latest) => window.scrollTo(0, latest),
+      });
+    }
+  };
+
   return (
     <div className="relative overflow-hidden min-h-[calc(100vh-64px)] flex items-center bg-gray-900">
       {/* Hero background image */}
@@ -57,7 +70,7 @@ export function Hero() {
                 <ArrowRight size={16} className="ml-2" />
               </Button>
             </Link>
-            <a href="#features" className="w-full sm:w-auto">
+            <a href="#features" onClick={(e) => handleScroll(e, "features")} className="w-full sm:w-auto">
               <Button 
                 variant="secondary" 
                 size="lg"

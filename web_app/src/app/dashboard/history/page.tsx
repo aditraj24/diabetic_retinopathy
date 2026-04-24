@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import { useHistory } from "@/hooks/useHistory";
-import { Navbar } from "@/components/layout/Navbar";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { HistoryFilters } from "@/components/history/HistoryFilters";
 import { HistoryGrid } from "@/components/history/HistoryGrid";
 import { Pagination } from "@/components/history/Pagination";
 import { EmptyState } from "@/components/history/EmptyState";
-import { useDebounce } from "@/hooks/useDebounce"; // Will create quickly to optimize search typing
+import { useDebounce } from "@/hooks/useDebounce";
 
 export default function HistoryPage() {
   const [page, setPage] = useState(1);
@@ -35,8 +34,6 @@ export default function HistoryPage() {
 
   return (
     <>
-      <div className="-mx-6 -mt-8 mb-8" />
-
       <PageHeader 
         title="Saved Results" 
         subtitle="Review your past retinal screenings and clinical recommendations."
@@ -55,7 +52,7 @@ export default function HistoryPage() {
           description="Failed to retrieve the analysis history. Please refresh to try again."
         />
       ) : (!isLoading && analyses.length === 0) ? (
-        <div className="mt-10">
+        <div className="mt-8">
           <EmptyState 
             title={debouncedSearch || gradeFilter !== "all" ? "No matches found" : "No saved analyses yet"}
             description={debouncedSearch || gradeFilter !== "all" 
@@ -69,7 +66,7 @@ export default function HistoryPage() {
         <>
           <HistoryGrid analyses={analyses} isLoading={isLoading} />
           
-          <div className="mt-8">
+          <div className="mt-6">
             <Pagination 
               currentPage={page}
               totalPages={totalPages}

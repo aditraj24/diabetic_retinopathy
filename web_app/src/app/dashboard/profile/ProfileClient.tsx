@@ -11,7 +11,7 @@ export default function ProfileClient({ userId, username, initialName }: { userI
   const [isEditing, setIsEditing] = useState(false);
   const [displayName, setDisplayName] = useState(initialName);
   const [isSaving, setIsSaving] = useState(false);
-  
+
   const { addToast } = useToast();
   const router = useRouter();
 
@@ -37,12 +37,12 @@ export default function ProfileClient({ userId, username, initialName }: { userI
   return (
     <div className="w-full text-center">
       <h2 className="text-xl font-bold text-primary mb-1">{username}</h2>
-      
+
       {isEditing ? (
         <div className="mt-4 space-y-3">
-          <Input 
-            value={displayName} 
-            onChange={e => setDisplayName(e.target.value)} 
+          <Input
+            value={displayName}
+            onChange={e => setDisplayName(e.target.value)}
             placeholder="Display Name"
           />
           <div className="flex gap-2">

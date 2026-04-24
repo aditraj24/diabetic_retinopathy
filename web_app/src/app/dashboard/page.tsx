@@ -35,8 +35,8 @@ export default function DashboardPage() {
         subtitle="Upload a retinal fundus photograph for immediate DL screening evaluation."
       />
 
-      <div className="flex flex-col lg:flex-row gap-8">
-        <div className="w-full lg:w-1/2 flex flex-col gap-6">
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="w-full lg:w-1/2 flex flex-col gap-5">
           <ImageUploader 
             onFileSelect={handleFileSelect} 
             previewUrl={preview} 
@@ -50,20 +50,19 @@ export default function DashboardPage() {
 
         <div className="w-full lg:w-1/2">
           {isAnalysing ? (
-            <div className="white-card p-8 flex flex-col items-center justify-center min-h-[400px] gap-6">
-              {/* Animated retinal processing GIF */}
-              <div className="relative w-48 h-48 md:w-56 md:h-56">
+            <div className="bg-white border border-gray-200 rounded-md p-8 flex flex-col items-center justify-center min-h-[400px] gap-5">
+              <div className="relative w-40 h-40">
                 <Image 
                   src="/RP-RI-1.gif" 
                   alt="Analysing retinal image..." 
                   fill 
-                  className="object-contain rounded-2xl" 
+                  className="object-contain" 
                   unoptimized
                 />
               </div>
               <div className="text-center">
-                <p className="text-teal font-bold text-lg animate-pulse">Analysing Retinal Image...</p>
-                <p className="text-secondary text-sm mt-1 font-medium">Running deep learning model inference</p>
+                <p className="text-gray-900 font-medium text-base">Analysing Retinal Image...</p>
+                <p className="text-gray-500 text-xs mt-1">Running deep learning model inference</p>
               </div>
             </div>
           ) : result ? (
@@ -76,18 +75,17 @@ export default function DashboardPage() {
           ) : (
             <div className="h-full min-h-[360px] flex">
               <div className="w-full h-full flex self-stretch items-center">
-                <div className="flex flex-col items-center justify-center p-12 text-center white-card w-full">
-                  {/* Retinography as visual guide */}
-                  <div className="relative w-24 h-24 mb-6 opacity-30">
+                <div className="flex flex-col items-center justify-center p-8 text-center bg-white border border-gray-200 rounded-md w-full">
+                  <div className="relative w-16 h-16 mb-4 opacity-20">
                     <Image 
                       src="/retinography.png" 
                       alt="Fundus example" 
                       fill 
-                      className="object-contain rounded-full mix-blend-multiply" 
+                      className="object-contain" 
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-2">No Analysis Yet</h3>
-                  <p className="text-secondary font-medium max-w-sm">Upload a retinal image and click analyse to see the detailed evaluation results here.</p>
+                  <h3 className="text-base font-semibold text-gray-900 mb-1">No Analysis Yet</h3>
+                  <p className="text-sm text-gray-500 max-w-sm">Upload a retinal image and click analyse to see the detailed evaluation results here.</p>
                 </div>
               </div>
             </div>

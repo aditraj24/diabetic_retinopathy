@@ -8,10 +8,10 @@ export interface PageHeaderProps {
 
 export function PageHeader({ title, subtitle, breadcrumb }: PageHeaderProps) {
   return (
-    <div className="mb-8">
-      {breadcrumb && <div className="text-sm text-secondary mb-2">{breadcrumb}</div>}
-      <h1 className="text-2xl font-bold text-primary">{title}</h1>
-      {subtitle && <p className="mt-1 text-sm text-secondary">{subtitle}</p>}
+    <div className="mb-6">
+      {breadcrumb && <div className="text-xs text-gray-500 mb-1.5">{breadcrumb}</div>}
+      <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
+      {subtitle && <p className="mt-1 text-sm text-gray-500">{subtitle}</p>}
     </div>
   );
 }

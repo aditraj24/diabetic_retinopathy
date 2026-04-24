@@ -32,36 +32,37 @@ export function ImageUploader({ onFileSelect, previewUrl, error }: ImageUploader
   return (
     <motion.div 
       className="w-full"
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
     >
       {!previewUrl ? (
         <div 
           {...getRootProps()} 
-          className={`border-2 border-dashed rounded-[20px] p-10 flex flex-col items-center justify-center min-h-[360px] cursor-pointer transition-all duration-300
-            ${isDragActive ? "border-teal bg-teal/5 shadow-glow-sm" : "border-gray-200 bg-white hover:bg-teal-mist/30 hover:border-teal/30"}
+          className={`border-2 border-dashed rounded-md p-8 flex flex-col items-center justify-center min-h-[360px] cursor-pointer transition-colors duration-200
+            ${isDragActive ? "border-gray-400 bg-gray-50" : "border-gray-300 bg-white hover:border-gray-400"}
             ${error ? "border-red-400 bg-red-50" : ""}
           `}
         >
           <input {...getInputProps()} />
           
-          <div className={`p-4 rounded-2xl mb-4 transition-all duration-300 ${isDragActive ? 'bg-teal/10 text-teal-dark' : 'bg-gray-50 text-secondary'}`}>
-            <Upload className="w-10 h-10" />
+          <div className={`p-3 rounded-md mb-4 transition-colors duration-200 ${
+            isDragActive ? 'bg-gray-100 text-gray-700' : 'bg-gray-50 text-gray-500'
+          }`}>
+            <Upload className="w-8 h-8" />
           </div>
           
-          <h3 className="text-xl font-bold text-primary mb-2 tracking-tight">
+          <h3 className="text-base font-semibold text-gray-900 mb-1">
             {isDragActive ? "Drop image here" : "Upload retinal image"}
           </h3>
-          <p className="text-sm text-secondary text-center max-w-xs font-medium">
+          <p className="text-xs text-gray-500 text-center max-w-xs">
             Drag and drop a clear fundus photograph, or click to select from your files.
           </p>
-          <p className="text-xs text-gray-400 mt-4 font-semibold">JPEG or PNG up to 10MB</p>
-          
+          <p className="text-xs text-gray-400 mt-3">JPEG or PNG up to 10MB</p>
         </div>
       ) : (
-        <div className="white-card overflow-hidden">
-          <div className="relative w-full aspect-square max-h-[400px] bg-gray-50 border-b border-gray-100">
+        <div className="bg-white border border-gray-200 rounded-md overflow-hidden">
+          <div className="relative w-full aspect-square max-h-[400px] bg-gray-50">
             <Image 
               src={previewUrl} 
               alt="Fundus preview" 
@@ -70,25 +71,27 @@ export function ImageUploader({ onFileSelect, previewUrl, error }: ImageUploader
             />
           </div>
           
-          <div className="p-4 bg-white flex items-center justify-between">
-            <div className="flex items-center text-sm font-bold text-teal-dark">
-              <CheckCircle className="w-5 h-5 mr-2 text-teal" />
+          <div className="p-3 bg-white border-t border-gray-100 flex items-center justify-between">
+            <div className="flex items-center text-xs font-medium text-gray-700">
+              <CheckCircle className="w-4 h-4 mr-1.5 text-green-600" />
               Image ready for analysis
             </div>
             
             <button 
               {...getRootProps()}
-              className="flex items-center gap-1.5 text-sm text-secondary font-semibold hover:text-primary transition-colors focus:outline-none"
+              className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700 transition-colors focus:outline-none"
             >
               <input {...getInputProps()} />
-              <RefreshCw size={14} />
+              <RefreshCw size={12} />
               Change image
             </button>
           </div>
         </div>
       )}
       
-      {error && <p className="mt-3 text-sm text-red-500 font-bold">{error}</p>}
+      {error && (
+        <p className="mt-2 text-xs text-red-600">{error}</p>
+      )}
     </motion.div>
   );
 }

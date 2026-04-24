@@ -21,22 +21,22 @@ export function Navbar() {
   ];
 
   return (
-    <header className="h-16 sticky top-0 z-50 w-full bg-white/80 backdrop-blur-xl border-b border-teal/10 flex items-center justify-between px-6 lg:px-10 shadow-sm">
+    <header className="h-16 sticky top-0 z-50 w-full bg-white border-b border-gray-200 flex items-center justify-between px-6 lg:px-8">
       <div className="flex items-center gap-8">
-        <Link href="/dashboard" className="text-xl font-bold flex items-center gap-2.5 group">
+        <Link href="/dashboard" className="flex items-center gap-2.5 group">
           <Image
             src="/new_logo2.png"
             alt="DR-Vision Logo"
-            width={40}
-            height={40}
-            className="transition-transform duration-300 group-hover:scale-110 drop-shadow-sm"
+            width={50}
+            height={50}
+            className="transition-transform duration-200 group-hover:scale-105"
           />
-          <span className="text-teal-dark font-extrabold tracking-tight transition-colors group-hover:text-teal">
+          <span className="text-lg font-semibold text-gray-900 tracking-tight">
             DR-Vision
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1 mt-0.5">
+        <nav className="hidden md:flex items-center gap-1">
           {links.map((link) => {
             const isActive = pathname === link.href;
             const Icon = link.icon;
@@ -44,12 +44,12 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${isActive
-                    ? "bg-teal/15 text-teal-dark shadow-sm"
-                    : "text-secondary hover:text-teal-dark hover:bg-teal-mist"
+                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-2 ${isActive
+                    ? "bg-gray-100 text-gray-900"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
               >
-                <Icon size={16} />
+                <Icon size={15} />
                 {link.label}
               </Link>
             );
@@ -61,12 +61,12 @@ export function Navbar() {
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-3 focus:outline-none p-1 rounded-full hover:bg-teal-mist transition-all duration-300 focus:ring-2 focus:ring-teal/30"
+            className="flex items-center gap-2 focus:outline-none p-1 rounded-md hover:bg-gray-50 transition-colors duration-200"
           >
-            <span className="text-sm font-semibold text-secondary hidden sm:block pl-2">
+            <span className="text-sm font-medium text-gray-700 hidden sm:block">
               {user?.displayName || user?.username || "Account"}
             </span>
-            <div className="w-9 h-9 rounded-full bg-teal text-white flex items-center justify-center font-bold text-sm shadow-btn">
+            <div className="w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center text-sm font-medium">
               {initial}
             </div>
           </button>
@@ -74,12 +74,12 @@ export function Navbar() {
           {dropdownOpen && (
             <>
               <div className="fixed inset-0 z-10" onClick={() => setDropdownOpen(false)} />
-              <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-100 rounded-2xl shadow-card py-2 z-20 origin-top-right animate-fade-in-up">
-                <div className="px-4 py-3 border-b border-gray-100 mb-1 bg-gray-50/50">
-                  <p className="text-sm font-bold text-primary truncate">
+              <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-20">
+                <div className="px-4 py-2.5 border-b border-gray-100 mb-1">
+                  <p className="text-sm font-medium text-gray-900 truncate">
                     {user?.displayName || user?.username}
                   </p>
-                  <p className="text-xs text-secondary font-medium truncate">
+                  <p className="text-xs text-gray-500 truncate">
                     Clinical Administrator
                   </p>
                 </div>
@@ -91,7 +91,7 @@ export function Navbar() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-teal-mist hover:text-teal-dark font-semibold transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                         onClick={() => setDropdownOpen(false)}
                       >
                         <Icon size={14} />
@@ -103,7 +103,7 @@ export function Navbar() {
 
                 <Link
                   href="/dashboard/profile"
-                  className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-teal-mist hover:text-teal-dark font-semibold transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                   onClick={() => setDropdownOpen(false)}
                 >
                   <User size={14} />
@@ -111,7 +111,7 @@ export function Navbar() {
                 </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
-                  className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 font-semibold transition-colors mt-1"
+                  className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
                 >
                   <LogOut size={14} />
                   Sign Out

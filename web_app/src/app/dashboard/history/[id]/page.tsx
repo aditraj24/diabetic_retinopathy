@@ -42,24 +42,27 @@ export default async function HistoryDetailPage({ params }: { params: Promise<{ 
 
   return (
     <>
-      <div className="mb-6">
-        <Link href="/dashboard/history" className="text-sm font-medium text-teal hover:text-teal-dark transition-colors flex items-center gap-1.5">
+      <div className="mb-5">
+        <Link 
+          href="/dashboard/history" 
+          className="text-sm text-gray-500 hover:text-gray-700 transition-colors flex items-center gap-1.5"
+        >
           <ArrowLeft size={14} />
           Back to History
         </Link>
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 white-card p-5">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3 bg-white border border-gray-200 rounded-md p-4">
         <div>
-          <h1 className="text-2xl font-bold text-primary">Analysis Review</h1>
-          <p className="text-sm text-secondary mt-1">Analysed on {dateStr}</p>
+          <h1 className="text-xl font-semibold text-gray-900">Analysis Review</h1>
+          <p className="text-xs text-gray-500 mt-0.5">Analysed on {dateStr}</p>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex flex-col lg:flex-row gap-6">
         <div className="w-full lg:w-5/12 xl:w-1/2">
-          <div className="white-card p-3 h-full max-h-[600px] sticky top-24">
-            <div className="relative w-full h-full min-h-[400px] rounded-xl overflow-hidden bg-gray-100">
+          <div className="bg-white border border-gray-200 rounded-md p-3 h-full max-h-[600px] sticky top-24">
+            <div className="relative w-full h-full min-h-[400px] rounded-sm overflow-hidden bg-gray-50">
               <Image 
                 src={analysis.cloudinaryUrl} 
                 alt="Retinal Image" 
@@ -73,11 +76,11 @@ export default async function HistoryDetailPage({ params }: { params: Promise<{ 
         </div>
 
         <div className="w-full lg:w-7/12 xl:w-1/2">
-          <div className="white-card p-6 sm:p-8">
-            <div className="text-center mb-8">
+          <div className="bg-white border border-gray-200 rounded-md p-6">
+            <div className="text-center mb-6">
               <GradeBadge grade={analysis.grade} size="lg" />
-              <p className="mt-4 text-secondary font-medium">
-                Predicted with <span className="font-bold text-primary">{(analysis.confidence * 100).toFixed(1)}%</span> confidence
+              <p className="mt-3 text-sm text-gray-600">
+                Predicted with <span className="font-semibold text-gray-900">{(analysis.confidence * 100).toFixed(1)}%</span> confidence
               </p>
             </div>
 
@@ -85,7 +88,7 @@ export default async function HistoryDetailPage({ params }: { params: Promise<{ 
             
             <RecommendationCard grade={analysis.grade} />
             
-            <div className="mt-8 border-t border-teal/10 pt-8">
+            <div className="mt-6 border-t border-gray-100 pt-6">
               <DetailClientComponents 
                 analysisId={id} 
                 initialNotes={analysis.notes || ""} 

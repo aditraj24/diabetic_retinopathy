@@ -1,12 +1,18 @@
 export function Footer() {
   return (
-    <footer className="w-full bg-white/50 backdrop-blur-sm border-t border-teal/10 mt-auto">
-      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-secondary">
+    <footer className="w-full bg-white border-t border-gray-200 mt-auto">
+      <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
         <p>© {new Date().getFullYear()} DR-Vision Clinical Systems. All rights reserved.</p>
-        <div className="flex gap-4 mt-4 md:mt-0">
-          <span className="hover:text-teal-dark transition-colors cursor-pointer">Privacy Policy</span>
-          <span className="hover:text-teal-dark transition-colors cursor-pointer">Terms of Service</span>
-          <span className="hover:text-teal-dark transition-colors cursor-pointer">Support</span>
+        <div className="flex gap-5 mt-3 md:mt-0">
+          <span className="hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+            Privacy Policy
+          </span>
+          <span className="hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+            Terms of Service
+          </span>
+          <span className="hover:text-gray-900 transition-colors duration-200 cursor-pointer">
+            Support
+          </span>
         </div>
       </div>
     </footer>

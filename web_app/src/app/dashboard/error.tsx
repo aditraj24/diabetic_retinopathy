@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/Button";
+import { AlertTriangle, RotateCcw } from "lucide-react";
 
 export default function Error({
   error,
@@ -15,17 +16,16 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-8 text-center bg-white rounded-2xl border border-gray-200 shadow-sm mx-auto max-w-2xl mt-12">
-      <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-6">
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
+    <div className="h-full flex flex-col items-center justify-center p-8 text-center glass-card mx-auto max-w-2xl mt-12">
+      <div className="w-16 h-16 bg-red-500/10 text-red-400 rounded-full flex items-center justify-center mb-6">
+        <AlertTriangle className="w-8 h-8" />
       </div>
-      <h2 className="text-2xl font-bold text-gray-900 mb-3">Something went wrong</h2>
-      <p className="text-gray-500 mb-8 max-w-md">
+      <h2 className="text-2xl font-bold text-white mb-3">Something went wrong</h2>
+      <p className="text-muted mb-8 max-w-md">
         {error.message || "An unexpected error occurred while loading this page."}
       </p>
-      <Button onClick={() => reset()} size="lg">
+      <Button onClick={() => reset()} size="lg" className="gap-2">
+        <RotateCcw size={16} />
         Try again
       </Button>
     </div>

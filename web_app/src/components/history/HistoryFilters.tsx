@@ -1,6 +1,7 @@
 "use client";
 
 import { GRADE_MAP } from "@/lib/gradeSeverity";
+import { Search } from "lucide-react";
 
 interface HistoryFiltersProps {
   currentGrade: string;
@@ -10,12 +11,12 @@ interface HistoryFiltersProps {
 }
 
 export function HistoryFilters({ currentGrade, onGradeChange, searchQuery, onSearchChange }: HistoryFiltersProps) {
-  const filterOptions: { value: string; label: string; color?: string }[] = [
+  const filterOptions: { value: string; label: string; hexColor?: string }[] = [
     { value: "all", label: "All" },
     ...Object.entries(GRADE_MAP).map(([gradeNum, info]) => ({
       value: gradeNum,
       label: info.shortLabel,
-      color: info.tailwindColor
+      hexColor: info.hexColor
     }))
   ];
 
@@ -26,16 +27,16 @@ export function HistoryFilters({ currentGrade, onGradeChange, searchQuery, onSea
           <button
             key={opt.value}
             onClick={() => onGradeChange(opt.value)}
-            className={`px-3 py-1.5 text-sm font-medium rounded-full transition-colors border ${
+            className={`px-3 py-1.5 text-sm font-medium rounded-full transition-all duration-300 border ${
               currentGrade === opt.value
-                ? "bg-gray-800 text-white border-gray-800"
-                : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50"
+                ? "bg-neon-blue/20 text-neon-blue border-neon-blue/30 shadow-glow-sm"
+                : "bg-white/5 text-muted border-white/10 hover:bg-white/10 hover:text-white"
             }`}
           >
-            {opt.color && currentGrade !== opt.value && (
+            {opt.hexColor && currentGrade !== opt.value && (
               <span 
                 className="inline-block w-2 h-2 rounded-full mr-2" 
-                style={{ backgroundColor: opt.color === 'green' ? '#22c55e' : opt.color === 'teal' ? '#14b8a6' : opt.color === 'yellow' ? '#eab308' : opt.color === 'orange' ? '#f97316' : '#ef4444' }}
+                style={{ backgroundColor: opt.hexColor }}
               />
             )}
             {opt.label}
@@ -45,16 +46,14 @@ export function HistoryFilters({ currentGrade, onGradeChange, searchQuery, onSea
 
       <div className="relative w-full md:w-64">
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+          <Search className="h-4 w-4 text-muted" />
         </div>
         <input
           type="text"
           placeholder="Search notes..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full pl-10 pr-3 py-2 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-neon-blue focus:border-transparent transition-all text-sm"
         />
       </div>
     </div>

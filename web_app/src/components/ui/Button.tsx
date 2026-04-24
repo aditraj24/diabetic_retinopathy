@@ -8,13 +8,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export function Button({ variant = "primary", size = "md", isLoading = false, className = "", children, disabled, ...props }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
+  const baseStyles = "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-navy";
   
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-    secondary: "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-blue-500",
-    danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
-    ghost: "bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-500"
+    primary: "btn-gradient hover:shadow-glow focus:ring-neon-blue",
+    secondary: "bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20 focus:ring-cyan",
+    danger: "bg-red-500/20 text-red-400 border border-red-500/20 hover:bg-red-500/30 focus:ring-red-500",
+    ghost: "bg-transparent text-muted hover:bg-white/5 hover:text-white focus:ring-white/20"
   };
 
   const sizes = {
@@ -25,7 +25,7 @@ export function Button({ variant = "primary", size = "md", isLoading = false, cl
 
   const selectedVariant = variants[variant] || variants.primary;
   const selectedSize = sizes[size] || sizes.md;
-  const disabledStyles = (disabled || isLoading) ? "opacity-60 cursor-not-allowed" : "";
+  const disabledStyles = (disabled || isLoading) ? "opacity-50 cursor-not-allowed" : "";
 
   return (
     <button

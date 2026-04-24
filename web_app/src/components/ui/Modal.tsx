@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { X } from "lucide-react";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -23,21 +24,19 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="fixed inset-0 bg-black/50 transition-opacity" onClick={onClose} />
-      <div className="relative z-10 w-full max-w-md scale-100 transform overflow-hidden rounded-xl bg-white text-left align-middle shadow-xl transition-all">
-        <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
-          <h3 className="text-lg font-medium leading-6 text-gray-900">{title}</h3>
+      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-md glass-card animate-fade-in-up">
+        <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+          <h3 className="text-lg font-medium leading-6 text-white">{title}</h3>
           <button
             onClick={onClose}
-            className="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="rounded-md text-muted hover:text-white focus:outline-none focus:ring-2 focus:ring-neon-blue transition-colors"
           >
             <span className="sr-only">Close panel</span>
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X size={20} />
           </button>
         </div>
-        <div className="bg-white px-6 py-4">{children}</div>
+        <div className="px-6 py-4">{children}</div>
       </div>
     </div>
   );

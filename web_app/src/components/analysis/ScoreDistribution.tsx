@@ -9,23 +9,23 @@ export function ScoreDistribution({ scores, topGrade }: { scores: number[]; topG
     name: GRADE_MAP[index].shortLabel,
     grade: index,
     value: score * 100,
-    fillColor: GRADE_MAP[index].tailwindColor
+    hexColor: GRADE_MAP[index].hexColor
   }));
 
-  const getTailwindColorHex = (colorName: string) => {
-    const map: Record<string, string> = {
-      green: "#22c55e",
-      teal: "#14b8a6",
-      yellow: "#eab308",
-      orange: "#f97316",
-      red: "#ef4444"
-    };
-    return map[colorName] || "#3b82f6";
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="glass-card px-3 py-2 text-sm !rounded-lg">
+          <p className="text-white font-semibold">{`G${label}: ${Number(payload[0].value).toFixed(1)}%`}</p>
+        </div>
+      );
+    }
+    return null;
   };
 
   return (
-    <div className="mt-6 border-t pt-6">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Confidence Distribution</h3>
+    <div className="mt-6 border-t border-white/10 pt-6">
+      <h3 className="text-lg font-semibold text-white mb-4">Confidence Distribution</h3>
       
       <div className="space-y-1 mb-6">
         {scores.map((score, index) => (
@@ -42,12 +42,27 @@ export function ScoreDistribution({ scores, topGrade }: { scores: number[]; topG
       <div className="h-48 w-full mt-4">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData} margin={{ top: 5, right: 0, left: -20, bottom: 5 }}>
-            <XAxis dataKey="grade" tickFormatter={(val) => `G${val}`} tick={{ fontSize: 12 }} />
-            <YAxis tickFormatter={(val) => `${val}%`} tick={{ fontSize: 12 }} />
-            <Tooltip formatter={(val: any) => [`${Number(val).toFixed(1)}%`, 'Confidence']} />
-            <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+            <XAxis 
+              dataKey="grade" 
+              tickFormatter={(val) => `G${val}`} 
+              tick={{ fontSize: 12, fill: '#A0AEC0' }} 
+              axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+              tickLine={false}
+            />
+            <YAxis 
+              tickFormatter={(val) => `${val}%`} 
+              tick={{ fontSize: 12, fill: '#A0AEC0' }} 
+              axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
+              tickLine={false}
+            />
+            <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
+            <Bar dataKey="value" radius={[6, 6, 0, 0]}>
               {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={getTailwindColorHex(entry.fillColor)} />
+                <Cell 
+                  key={`cell-${index}`} 
+                  fill={entry.hexColor} 
+                  style={{ filter: index === topGrade ? 'drop-shadow(0 0 8px ' + entry.hexColor + ')' : 'none' }}
+                />
               ))}
             </Bar>
           </BarChart>

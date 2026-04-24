@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PaginationProps {
   currentPage: number;
@@ -15,11 +16,11 @@ export function Pagination({ currentPage, totalPages, totalItems, itemsPerPage, 
   const endValue = Math.min(currentPage * itemsPerPage, totalItems);
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between border-t border-gray-200 bg-white px-6 py-4 rounded-xl mt-6 shadow-sm">
+    <div className="flex flex-col sm:flex-row items-center justify-between glass-card px-6 py-4 mt-6">
       <div className="hidden sm:block">
-        <p className="text-sm text-gray-700">
-          Showing <span className="font-medium">{startValue}</span> to <span className="font-medium">{endValue}</span> of{" "}
-          <span className="font-medium">{totalItems}</span> results
+        <p className="text-sm text-muted">
+          Showing <span className="font-medium text-white">{startValue}</span> to <span className="font-medium text-white">{endValue}</span> of{" "}
+          <span className="font-medium text-white">{totalItems}</span> results
         </p>
       </div>
       
@@ -29,12 +30,14 @@ export function Pagination({ currentPage, totalPages, totalItems, itemsPerPage, 
           size="sm"
           disabled={currentPage === 1}
           onClick={() => onPageChange(currentPage - 1)}
+          className="gap-1"
         >
+          <ChevronLeft size={14} />
           Previous
         </Button>
 
-        <span className="text-sm font-medium text-gray-700 px-4">
-          Page {currentPage} of {totalPages}
+        <span className="text-sm font-medium text-muted px-4">
+          Page <span className="text-white">{currentPage}</span> of <span className="text-white">{totalPages}</span>
         </span>
 
         <Button
@@ -42,8 +45,10 @@ export function Pagination({ currentPage, totalPages, totalItems, itemsPerPage, 
           size="sm"
           disabled={currentPage === totalPages}
           onClick={() => onPageChange(currentPage + 1)}
+          className="gap-1"
         >
           Next
+          <ChevronRight size={14} />
         </Button>
       </div>
     </div>

@@ -1,25 +1,46 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto w-full sm:max-w-md">
-        <Link href="/" className="flex items-center justify-center gap-2 mb-6 hover:opacity-80 transition-opacity">
-          {/* <span className="text-blue-600 text-3xl">👁️</span> */}
-          <span className="text-3xl font-bold text-gray-900">DR-Vision</span>
+    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Caduceus watermark — subtle medical symbol in the background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none">
+        <Image
+          src="/snakeHealth.png"
+          alt=""
+          width={500}
+          height={500}
+          className="invert"
+          aria-hidden="true"
+        />
+      </div>
+
+      <div className="sm:mx-auto w-full sm:max-w-md relative z-10">
+        <Link href="/" className="flex flex-col items-center gap-2.0 mb-6 hover:opacity-90 transition-opacity">
+          <Image 
+            src="/new_logo2.png" 
+            alt="DR-Vision Logo" 
+            width={72} 
+            height={72} 
+            className="drop-shadow-[0_0_12px_rgba(0,117,255,0.25)]"
+          />
+          <span className="text-3xl font-bold text-cyan/90">DR-Vision</span>
         </Link>
       </div>
 
-      <div className="sm:mx-auto w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-xl shadow-gray-200/50 sm:rounded-2xl sm:px-10 border border-gray-100">
+      <div className="sm:mx-auto w-full sm:max-w-md relative z-10">
+        <div className="glass-card py-8 px-4 sm:px-10">
           {children}
         </div>
       </div>
       
-      <div className="mt-8 text-center text-sm text-gray-500">
-        <Link href="/" className="hover:text-gray-900 transition-colors font-medium">
-          &larr; Back to Home
+      <div className="mt-8 text-center text-sm text-muted relative z-10">
+        <Link href="/" className="hover:text-white transition-colors font-medium inline-flex items-center gap-1.5">
+          <ArrowLeft size={14} />
+          Back to Home
         </Link>
       </div>
     </div>

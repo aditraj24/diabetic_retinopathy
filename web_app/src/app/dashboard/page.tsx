@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useAnalysis } from "@/hooks/useAnalysis";
 import { useToast } from "@/hooks/useToast";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -8,7 +9,6 @@ import { ImageUploader } from "@/components/analysis/ImageUploader";
 import { AnalyseButton } from "@/components/analysis/AnalyseButton";
 import { ResultPanel } from "@/components/analysis/ResultPanel";
 import { AnalysisSkeleton } from "@/components/analysis/AnalysisSkeleton";
-import { EmptyState } from "@/components/history/EmptyState";
 
 export default function DashboardPage() {
   const { 
@@ -35,7 +35,7 @@ export default function DashboardPage() {
       
       <PageHeader 
         title="New Analysis" 
-        subtitle="Upload a retinal fundus photograph for immediate AI screening evaluation."
+        subtitle="Upload a retinal fundus photograph for immediate DL screening evaluation."
       />
 
       <div className="flex flex-col lg:flex-row gap-8">
@@ -53,7 +53,22 @@ export default function DashboardPage() {
 
         <div className="w-full lg:w-1/2">
           {isAnalysing ? (
-            <AnalysisSkeleton />
+            <div className="glass-card p-8 flex flex-col items-center justify-center min-h-[400px] gap-6">
+              {/* Animated retinal processing GIF */}
+              <div className="relative w-48 h-48 md:w-56 md:h-56">
+                <Image 
+                  src="/RP-RI-1.gif" 
+                  alt="Analysing retinal image..." 
+                  fill 
+                  className="object-contain rounded-2xl" 
+                  unoptimized
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-white font-semibold text-lg animate-pulse">Analysing Retinal Image...</p>
+                <p className="text-muted text-sm mt-1">Running deep learning model inference</p>
+              </div>
+            </div>
           ) : result ? (
             <ResultPanel 
               result={result} 
@@ -64,15 +79,19 @@ export default function DashboardPage() {
           ) : (
             <div className="h-full min-h-[360px] flex">
               <div className="w-full h-full flex self-stretch items-center">
-                <EmptyState 
-                  title="No Analysis Yet"
-                  description="Upload a retinal image and click analyse to see the detailed evaluation results here."
-                  icon={(
-                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  )}
-                />
+                <div className="flex flex-col items-center justify-center p-12 text-center glass-card w-full">
+                  {/* Retinography as visual guide */}
+                  <div className="relative w-24 h-24 mb-6 opacity-40">
+                    <Image 
+                      src="/retinography.png" 
+                      alt="Fundus example" 
+                      fill 
+                      className="object-contain rounded-full" 
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">No Analysis Yet</h3>
+                  <p className="text-muted max-w-sm">Upload a retinal image and click analyse to see the detailed evaluation results here.</p>
+                </div>
               </div>
             </div>
           )}

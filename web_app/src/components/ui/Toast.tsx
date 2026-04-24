@@ -1,6 +1,7 @@
 "use client";
 
 import { useToast } from "@/hooks/useToast";
+import { X } from "lucide-react";
 
 export function Toast() {
   const { toasts, removeToast } = useToast();
@@ -12,23 +13,19 @@ export function Toast() {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`pointer-events-auto w-full overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition-all flex items-start border-l-4 p-4 ${
-            toast.type === "success" ? "border-l-green-500" :
-            toast.type === "error" ? "border-l-red-500" : "border-l-blue-500"
+          className={`pointer-events-auto w-full overflow-hidden rounded-xl glass-card border-l-4 p-4 animate-fade-in-up ${
+            toast.type === "success" ? "border-l-success-green" :
+            toast.type === "error" ? "border-l-red-500" : "border-l-neon-blue"
           }`}
         >
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900">{toast.message}</p>
-          </div>
-          <div className="ml-4 flex flex-shrink-0">
+          <div className="flex-1 min-w-0 flex items-start justify-between">
+            <p className="text-sm font-medium text-white">{toast.message}</p>
             <button
               onClick={() => removeToast(toast.id)}
-              className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
+              className="ml-4 flex-shrink-0 inline-flex rounded-md text-muted hover:text-white focus:outline-none transition-colors"
             >
               <span className="sr-only">Close</span>
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
+              <X size={16} />
             </button>
           </div>
         </div>

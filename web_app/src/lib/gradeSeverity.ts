@@ -7,6 +7,8 @@ export interface GradeMapping extends GradeInfo {
   badgeText: string;
   barColor: string;
   borderColor: string;
+  glowColor: string;
+  hexColor: string;
 }
 
 export const GRADE_MAP: Record<number, GradeMapping> = {
@@ -14,10 +16,12 @@ export const GRADE_MAP: Record<number, GradeMapping> = {
     label: "No DR",
     shortLabel: "No DR",
     tailwindColor: "green",
-    badgeBg: "bg-green-100",
-    badgeText: "text-green-800",
+    badgeBg: "bg-green-500/15",
+    badgeText: "text-green-400",
     barColor: "bg-green-500",
     borderColor: "border-l-green-500",
+    glowColor: "shadow-green-500/20",
+    hexColor: "#22c55e",
     color: "green",
     recommendation: "No diabetic retinopathy detected. Maintain good glycaemic control and schedule annual screening.",
     urgency: "routine"
@@ -26,10 +30,12 @@ export const GRADE_MAP: Record<number, GradeMapping> = {
     label: "Mild NPDR",
     shortLabel: "Mild",
     tailwindColor: "teal",
-    badgeBg: "bg-teal-100",
-    badgeText: "text-teal-800",
+    badgeBg: "bg-teal-500/15",
+    badgeText: "text-teal-400",
     barColor: "bg-teal-500",
     borderColor: "border-l-teal-500",
+    glowColor: "shadow-teal-500/20",
+    hexColor: "#14b8a6",
     color: "teal",
     recommendation: "Mild non-proliferative DR detected. Optimise blood sugar and blood pressure. Review in 12 months.",
     urgency: "watch"
@@ -38,10 +44,12 @@ export const GRADE_MAP: Record<number, GradeMapping> = {
     label: "Moderate NPDR",
     shortLabel: "Moderate",
     tailwindColor: "yellow",
-    badgeBg: "bg-yellow-100",
-    badgeText: "text-yellow-800",
+    badgeBg: "bg-yellow-500/15",
+    badgeText: "text-yellow-400",
     barColor: "bg-yellow-500",
     borderColor: "border-l-yellow-500",
+    glowColor: "shadow-yellow-500/20",
+    hexColor: "#eab308",
     color: "yellow",
     recommendation: "Moderate non-proliferative DR detected. Ophthalmology review recommended within 6 months.",
     urgency: "soon"
@@ -50,10 +58,12 @@ export const GRADE_MAP: Record<number, GradeMapping> = {
     label: "Severe NPDR",
     shortLabel: "Severe",
     tailwindColor: "orange",
-    badgeBg: "bg-orange-100",
-    badgeText: "text-orange-800",
+    badgeBg: "bg-orange-500/15",
+    badgeText: "text-orange-400",
     barColor: "bg-orange-500",
     borderColor: "border-l-orange-500",
+    glowColor: "shadow-orange-500/20",
+    hexColor: "#f97316",
     color: "orange",
     recommendation: "Severe non-proliferative DR detected. Urgent ophthalmology referral within 1 month required.",
     urgency: "urgent"
@@ -62,10 +72,12 @@ export const GRADE_MAP: Record<number, GradeMapping> = {
     label: "Proliferative DR",
     shortLabel: "Proliferative",
     tailwindColor: "red",
-    badgeBg: "bg-red-100",
-    badgeText: "text-red-800",
+    badgeBg: "bg-red-500/15",
+    badgeText: "text-red-400",
     barColor: "bg-red-500",
     borderColor: "border-l-red-500",
+    glowColor: "shadow-red-500/20",
+    hexColor: "#ef4444",
     color: "red",
     recommendation: "Proliferative DR detected. Same-day urgent ophthalmology referral required. Risk of vision loss.",
     urgency: "emergency"
